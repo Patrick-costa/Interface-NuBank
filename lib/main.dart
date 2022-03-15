@@ -200,7 +200,6 @@ _accountList() {
   return Container(
     height: 120,
     margin: const EdgeInsets.symmetric(vertical: 10),
-    padding: const EdgeInsets.only(left: 10),
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -282,10 +281,10 @@ _cards() {
 }
 
 _cardsInfo() {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-    child: SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           Container(
@@ -673,21 +672,22 @@ _cardShopText() {
 
 _cardEnd() {
   return Container(
-      margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _cardEndTitle(),
-          _cardEndSlide(),
-        ],
-      ));
+    margin: const EdgeInsets.only(bottom: 20),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _cardEndTitle(),
+        _cardEndSlide(),
+      ],
+    ),
+  );
 }
 
 _cardEndTitle() {
   return Align(
     alignment: AlignmentDirectional.centerStart,
     child: Container(
-      margin: const EdgeInsets.only(bottom: 30),
+      margin: const EdgeInsets.only(bottom: 30, left: 20),
       child: const Text('Descubra mais',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
     ),
@@ -697,13 +697,16 @@ _cardEndTitle() {
 _cardEndSlide() {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _cardSlide(),
-        _cardSlide(),
-        _cardSlide(),
-      ],
+    child: Container(
+      margin: const EdgeInsets.only(left: 20, right: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _cardSlide(),
+          _cardSlide(),
+          _cardSlide(),
+        ],
+      ),
     ),
   );
 }
@@ -738,7 +741,8 @@ _cardSlide() {
         ),
         Container(
           margin: const EdgeInsets.only(left: 20, bottom: 20),
-          child: const Text('Sua liberdade financeira começa com você escolhend...',
+          child: const Text(
+              'Sua liberdade financeira começa com você escolhend...',
               style: TextStyle(
                 color: Colors.grey,
               )),
